@@ -1,0 +1,86 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    
+   
+}
+
+body{
+    background-image: url('./assets/background-learner.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+.form{
+    height: auto;
+    width: auto;
+    /* align-items: center; */
+    margin: 20%;
+    background-color: white;
+}
+
+.create-account{
+
+}
+
+.fill-form{
+
+}
+
+.full-name{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+
+.full-name input{
+    width: 50%;
+}
+
+
+.email{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+
+.email input{
+    width: 50%;
+}
+
+.password{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+
+.password input{
+    width: 50%;
+}
+
+
+.confirm-pw{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+
+}
+
+.confirm-pw input{
+    width: 50%;
+}
+
+.sign-up{
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up button{
+    width: 50%;
+    margin: 5px;
+
+}
