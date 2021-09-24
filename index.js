@@ -1,13 +1,11 @@
 const express = require('express');
 const path = require('path');
-// const mongoose = require("mongoose");
-var bodyParser=require("body-parser");
+const mongoose = require("mongoose");
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/Tutorial',{
     useNewUrlParser:true,
     useUnifiedTopology:true
@@ -18,17 +16,71 @@ mongoose.connect('mongodb://localhost:27017/Tutorial',{
 });
 var db=mongoose.connection;
 
-app.use(bodyParser.json());
+
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+
   
 var engine = require('consolidate');
 
 app.set('views', __dirname + '/views');
 app.engine('html', engine.mustache);
 app.set('view engine', 'html');
+
+
+
+// const userSchema = new mongoose.Schema({
+//     username: {
+//       type: String,
+//       required: true,
+//     },
+//     email: {
+//       type: String,
+//       required: true,
+//     },
+//     password: {
+//       type: String,
+//       required: true,
+//     },
+//   })
+
+
+//  const User= mongoose.model("User", userSchema)
+// 
+//   const stud = new User({
+//       name: 'Madison Hyde',
+//       email: 'xyz@email.com',
+//       password : 333,
+// });
+// stud.save().then(() => console.log("One entry added"));
+
+
+
+app.get("/",function(req,res){
+    res.render("login");
+})
+
+
+app.post('/login', function(req, res) {
+
+    console.log(req.body);
+
+    // db.collection('details').findOne({ name: req.body.name }, function(err, user){
+    //     if(err) {
+    //       console.log(err);
+    //     }
+    //     var message;
+    //     if(user) {
+    //       console.log(user)
+    //         message = "user exists";
+    //         console.log(message)
+    //     } else {
+    //         message= "user doesn't exist";
+    //         console.log(message)
+    //     }
+    //     res.json({message: message});
+    // });
+});
+
 
 app.post('/register', function(req,res){
     var name = req.body.name;
@@ -45,9 +97,17 @@ app.post('/register', function(req,res){
         console.log("Record inserted Successfully");
               
     });
-          
-    return res.redirect('login.html');
+       
+    // res.send("Hello " + name + ", Thank you for subcribing. You email is " + email);
+    res.redirect("/welcome");
+});
+
+app.get('/welcome',function(req,res){
+    
+    res.render('welcome.html');
+
 })
+
 
 // const db = require('./db');
 // // Connect to the database

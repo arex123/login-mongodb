@@ -84,3 +84,10 @@ body{
     margin: 5px;
 
 }
+
+
+.welcome-head{
+    color:rgb(139, 139, 185);
+    display: flex;
+    text-align: center;
+}
